@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Primary Meta Tags -->
+    <title>{% block title %}{{ SITENAME }}{% if SITESUBTITLE %} - {{ SITESUBTITLE }}{% endif %}{% endblock %}</title>
+    <meta name="title" content="{% block meta_title %}{{ SITENAME }}{% if SITESUBTITLE %} - {{ SITESUBTITLE }}{% endif %}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{{ CUSTOM_VARS.site_description }}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{{ CUSTOM_VARS.meta_keywords }}{% endblock %}">
+    <meta name="author" content="{{ AUTHOR }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}{{ SITEURL }}/{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}{{ SITENAME }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ CUSTOM_VARS.site_description }}{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ SITEURL }}/theme/images/og-default.jpg{% endblock %}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{% block twitter_url %}{{ SITEURL }}/{% endblock %}">
+    <meta property="twitter:title" content="{% block twitter_title %}{{ SITENAME }}{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}{{ CUSTOM_VARS.site_description }}{% endblock %}">
+    <meta property="twitter:image" content="{% block twitter_image %}{{ SITEURL }}/theme/images/og-default.jpg{% endblock %}">
+    {% if CUSTOM_VARS.twitter_username %}
+    <meta name="twitter:creator" content="@{{ CUSTOM_VARS.twitter_username }}">
+    {% endif %}
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{% block canonical %}{{ SITEURL }}/{% endblock %}">
+    
+    <!-- Feeds -->
+    {% if FEED_ALL_ATOM %}
+    <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed">
+    {% endif %}
+    {% if FEED_ALL_RSS %}
+    <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed">
+    {% endif %}
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="{{ SITEURL }}/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ SITEURL }}/theme/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ SITEURL }}/theme/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ SITEURL }}/theme/images/favicon-16x16.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        gray: {
+                            50: '#f9fafb',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            300: '#d1d5db',
+                            400: '#9ca3af',
+                            500: '#6b7280',
+                            600: '#4b5563',
+                            700: '#374151',
+                            800: '#1f2937',
+                            900: '#111827',
+                        }
+                    },
+                    typography: {
+                        DEFAULT: {
+                            css: {
+                                maxWidth: 'none',
+                                color: '#374151',
+                                lineHeight: '1.7',
+                                '[class~="lead"]': {
+                                    color: '#4b5563',
+                                },
+                                a: {
+                                    color: '#2563eb',
+                                    textDecoration: 'underline',
+                                    fontWeight: '500',
+                                },
+                                strong: {
+                                    color: '#111827',
+                                    fontWeight: '600',
+                                },
+                                'ol[type="A"]': {
+                                    '--list-counter-style': 'upper-alpha',
+                                },
+                                'ol[type="a"]': {
+                                    '--list-counter-style': 'lower-alpha',
+                                },
+                                'ol[type="A" s]': {
+                                    '--list-counter-style': 'upper-alpha',
+                                },
+                                'ol[type="a" s]': {
+                                    '--list-counter-style': 'lower-alpha',
+                                },
+                                'ol[type="I"]': {
+                                    '--list-counter-style': 'upper-roman',
+                                },
+                                'ol[type="i"]': {
+                                    '--list-counter-style': 'lower-roman',
+                                },
+                                'ol[type="I" s]': {
+                                    '--list-counter-style': 'upper-roman',
+                                },
+                                'ol[type="i" s]': {
+                                    '--list-counter-style': 'lower-roman',
+                                },
+                                'ol[type="1"]': {
+                                    '--list-counter-style': 'decimal',
+                                },
+                            },
+                        },
+                        dark: {
+                            css: {
+                                color: '#d1d5db',
+                                '[class~="lead"]': {
+                                    color: '#9ca3af',
+                                },
+                                a: {
+                                    color: '#60a5fa',
+                                },
+                                strong: {
+                                    color: '#f9fafb',
+                                },
+                                'ol > li::marker': {
+                                    color: '#9ca3af',
+                                },
+                                'ul > li::marker': {
+                                    color: '#9ca3af',
+                                },
+                                hr: {
+                                    borderColor: '#374151',
+                                },
+                                blockquote: {
+                                    color: '#d1d5db',
+                                    borderLeftColor: '#374151',
+                                },
+                                h1: {
+                                    color: '#f9fafb',
+                                },
+                                h2: {
+                                    color: '#f9fafb',
+                                },
+                                h3: {
+                                    color: '#f9fafb',
+                                },
+                                h4: {
+                                    color: '#f9fafb',
+                                },
+                                'figure figcaption': {
+                                    color: '#9ca3af',
+                                },
+                                code: {
+                                    color: '#f9fafb',
+                                },
+                                'a code': {
+                                    color: '#f9fafb',
+                                },
+                                pre: {
+                                    color: '#d1d5db',
+                                    backgroundColor: '#1f2937',
+                                },
+                                thead: {
+                                    color: '#f9fafb',
+                                    borderBottomColor: '#4b5563',
+                                },
+                                'tbody tr': {
+                                    borderBottomColor: '#374151',
+                                },
+                            },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" media="(prefers-color-scheme: light)">
+    
+    <!-- Custom CSS -->
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        /* Dark mode scrollbar */
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        
+        /* Reading progress bar */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(to right, #2563eb, #3b82f6);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+        
+        /* Smooth transitions */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+    </style>
+    
+    {% block extra_head %}{% endblock %}
+    
+    <!-- Analytics -->
+    {% if AI_BLOG_CONFIG.google_analytics %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ AI_BLOG_CONFIG.google_analytics }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ AI_BLOG_CONFIG.google_analytics }}');
+    </script>
+    {% endif %}
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased">
+    <!-- Reading progress bar -->
+    <div class="reading-progress"></div>
+    
+    <!-- Skip to content -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-primary-600 text-white px-4 py-2 rounded-md z-50">
+        Skip to content
+    </a>
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-4">
+                    <a href="{{ SITEURL }}/" class="text-2xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors">
+                        {{ SITENAME }}
+                    </a>
+                    {% if SITESUBTITLE %}
+                    <span class="hidden sm:block text-sm text-gray-600 dark:text-gray-400">{{ SITESUBTITLE }}</span>
+                    {% endif %}
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-6">
+                    {% for title, link in MENUITEMS %}
+                    <a href="{{ link }}" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
+                        {{ title }}
+                    </a>
+                    {% endfor %}
+                    
+                    <!-- Dark mode toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle dark mode">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle mobile menu">
+                    <svg id="mobile-menu-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="mobile-menu-close" class="hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex flex-col space-y-3">
+                    {% for title, link in MENUITEMS %}
+                    <a href="{{ link }}" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
+                        {{ title }}
+                    </a>
+                    {% endfor %}
+                    
+                    <!-- Mobile dark mode toggle -->
+                    <button id="mobile-theme-toggle" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors text-left">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <span>Toggle Dark Mode</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main-content" class="min-h-screen">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About {{ SITENAME }}</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                        {{ CUSTOM_VARS.site_description }}
+                    </p>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Links</h3>
+                    <ul class="space-y-2">
+                        {% for name, link in LINKS %}
+                        <li>
+                            <a href="{{ link }}" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-colors">
+                                {{ name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <!-- Social -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        {% for name, link in SOCIAL %}
+                        <a href="{{ link }}" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" aria-label="{{ name }}">
+                            {% if name == 'GitHub' %}
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            {% elif name == 'RSS' %}
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/></svg>
+                            {% else %}
+                                <span class="text-sm">{{ name }}</span>
+                            {% endif %}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    {{ FOOTER_TEXT }}
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    
+    <!-- Theme and interaction scripts -->
+    <script src="{{ SITEURL }}/theme/js/blog.js"></script>
+    
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html> 

@@ -1,0 +1,35 @@
+# AI Blog Generator Dependencies
+# Core content generation
+openai>=1.35.0           # OpenAI API for GPT-4o and DALL·E
+feedparser>=6.0.10       # RSS feed parsing for trending topics
+requests>=2.31.0         # HTTP requests for API calls
+beautifulsoup4>=4.12.2   # HTML parsing for content extraction
+
+# Static site generation
+pelican>=4.9.1           # Static site generator
+markdown>=3.5.0          # Markdown processing
+jinja2>=3.1.2           # Template engine
+pygments>=2.16.0        # Syntax highlighting
+
+# Image processing
+pillow>=10.0.0          # Image optimization and resizing
+python-dotenv>=1.0.0    # Environment variable management
+
+# Git operations
+gitpython>=3.1.40       # Git repository operations
+
+# Development and testing
+pytest>=7.4.0          # Testing framework
+pytest-cov>=4.1.0      # Coverage reporting
+mypy>=1.5.0            # Static type checking
+black>=23.7.0          # Code formatting
+flake8>=6.0.0          # Linting
+
+# Date/time handling
+python-dateutil>=2.8.2  # Date parsing and manipulation
+
+# YAML processing
+pyyaml>=6.0.1           # YAML front-matter processing
+
+# Performance monitoring
+rich>=13.5.0            # Rich console output for debugging 

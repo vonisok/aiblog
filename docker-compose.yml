@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # Development server
+  blog-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - /app/.cache  # Anonymous volume for cache
+    environment:
+      - PELICAN_ENV=development
+    env_file:
+      - .env
+    command: >
+      bash -c "python -m pelican content -s pelicanconf.py &&
+               python -m pelican --listen --bind 0.0.0.0 --port 8000 --autoreload"
+    profiles:
+      - dev
+
+  # Content generator
+  content-generator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    command: python -m content_pipeline.generator
+    profiles:
+      - generator
+
+  # Production build
+  blog-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    volumes:
+      - ./output:/app/output
+    environment:
+      - PELICAN_ENV=production
+    env_file:
+      - .env
+    command: >
+      bash -c "python -m content_pipeline.generator &&
+               python -m pelican content -s publishconf.py"
+    profiles:
+      - build
+
+  # Static file server for production testing
+  blog-serve:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./output:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    profiles:
+      - serve
+
+# Networks
+networks:
+  default:
+    name: aiblog-network
+
+# Volumes
+volumes:
+  blog_cache:
+    driver: local 
