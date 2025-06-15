@@ -1,0 +1,175 @@
+Cursor Context – AI‑Generated How‑To Blog
+
+Purpose  Give Cursor’s AI the evergreen context it needs to keep every chat aligned with our mission: a guide‑centric blog that teaches readers practical ways to leverage AI and profit from it.
+
+0. Role Prompt (Pin This)
+
+You are an elite full‑stack dev + technical writer building a monetised, AI‑generated how‑to blog. You master Python, Pelican, Tailwind, SEO, and GitHub CI/CD. Always reason step‑by‑step, minimise fluff, deliver production‑ready code with comments.
+
+1. TL;DR – System Overview (≤ 100 words)
+
+Static site built with Pelican + custom Tailwind theme. Content is auto‑drafted by LLM scripts in content_pipeline/, saved as Markdown, reviewed, then deployed via GitHub Actions → Netlify. Business model: affiliate links, lead magnets, and eventual info‑products. Success KPI: 2 quality guides/day, 1 k+ organic visits in 30 days, ≥ 5 % affiliate CTR.
+
+2. High‑Level Goals
+
+Launch MVP – polished theme, working pipeline, ≥ 1 post/day.
+
+Smooth Dev XP – single‑command setup (make dev or docker compose up) for cross‑platform onboarding.
+
+SEO Ready – sitemap, meta tags, Core‑Web‑Vitals 90+.
+
+Monetise – affiliate shortcodes + email capture live by week 3.
+
+Continuous Improvement – weekly analytics‑driven retro post.
+
+3. Content & Editorial Framework  🎯
+
+3.1 Audience Personas
+
+Persona
+
+Pain Point
+
+What They Want
+
+Side‑hustler Sam
+
+Needs extra income streams.
+
+Step‑by‑step money‑making AI workflows.
+
+Dev Deb
+
+Wants to integrate LLMs into apps.
+
+In‑depth coding tutorials + repos.
+
+Creator Chris
+
+Lacks tech skills but loves AI tools.
+
+No‑code guides & prompt templates.
+
+3.2 Core Pillars & Cadence
+
+Pillar
+
+Brief
+
+Cadence
+
+AI Money Hacks
+
+Earn with AI: freelancing, SaaS, niche sites, affiliate funnels.
+
+Daily guide
+
+Build with LLMs
+
+Code‑heavy tutorials (Python, JS, APIs, embeddings).
+
+3×/week
+
+Prompt Engineering
+
+Reusable prompt patterns, case studies.
+
+2×/week
+
+Tool Deep‑dives
+
+Hands‑on reviews with affiliate links.
+
+Weekly
+
+News & Trends
+
+Curated AI news + TL;DR commentary.
+
+Daily short
+
+3.3 Post Template Requirements
+
+H1 (≤ 60 chars, keyword‑rich).
+
+Meta description ≤ 155 chars.
+
+TL;DR block (3–5 bullets).
+
+Step‑by‑step guide using ## sections.
+
+Code blocks where relevant (Python by default).
+
+Call‑outs: 💡Tips, ⚠️Warnings boxes via Markdown admonitions.
+
+2 CTAs → newsletter & Discord.
+
+Reading‑time badge, date, tags.
+
+3.4 Voice & Style
+
+Concise, actionable, no fluff.
+
+Use second person (“you”).
+
+Explain why before how.
+
+Use tables/lists for scannability.
+
+Assume reader has basic computer literacy; link out for expert terms.
+
+3.5 SEO Check‑list (post‑process script)
+
+Primary keyword in H1, first 100 words, slug.
+
+Flesch reading ≥ 50.
+
+At least 3 internal + 1 external authority link.
+
+<!--more--> after intro paragraph.
+
+4. Current Focus (Sprint Ø)
+
+Theme polish → dark/light toggle, reading‑time badge, OG meta tags.
+
+Content pipeline → generators.py prompt → JSON → Markdown converter + SEO lint.
+
+CI/CD → GitHub Action build.yml deploying to Netlify prod.
+
+5. Folder Conventions
+
+content/            # YYYY/slug.md articles
+content_pipeline/   # LLM + post‑process scripts
+themes/aiblog/      # Tailwind + Jinja templates
+.github/workflows/  # CI configs
+
+6. Cursor Workflow Ritual (per “Idiot’s Guide”)
+
+State big picture (paste Section 1 TL;DR).
+
+Describe immediate objective (pick from Sprint focus).
+
+Ask Cursor to summarise & output a step plan.
+
+Paste plan back if context drifts.
+
+7. Backlog Snapshot (to triage later)
+
+Plausible analytics integration.
+
+Multilingual support via pelican‑i18n.
+
+Interactive code sandboxes (StackBlitz).
+
+GPT‑powered search widget.
+
+Info‑product funnel (free PDF → email sequence).
+
+8. References
+
+Detailed execution playbook → AI_Blog_Agent_Playbook.md (see canvas).
+
+Pelican docs, Tailwind docs.
+
+End of context file.
+

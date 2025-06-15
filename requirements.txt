@@ -11,6 +11,9 @@ markdown>=3.5.0          # Markdown processing
 jinja2>=3.1.2           # Template engine
 pygments>=2.16.0        # Syntax highlighting
 
+# Pelican plugins
+pelican-readtime>=1.0.0  # Reading time calculation plugin
+
 # Image processing
 pillow>=10.0.0          # Image optimization and resizing
 python-dotenv>=1.0.0    # Environment variable management

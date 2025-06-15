@@ -6,6 +6,7 @@
 
 import os
 import sys
+import logging
 sys.path.append(os.curdir)
 from pelicanconf import *
 
@@ -187,7 +188,6 @@ MAX_ARTICLES_ON_INDEX = 10
 MAX_ARTICLES_IN_FEED = 20
 
 # Production Logging
-import logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

@@ -2,8 +2,10 @@ Title: Welcome to Your AI Blog
 Date: 2024-01-01
 Slug: welcome
 Author: AI Blog System
-Tags: welcome, ai, automation
+Category: Getting Started
+Tags: welcome, ai, automation, blog, getting-started
 Summary: Your AI-powered blog is now live and ready to generate amazing content daily!
+Description: A comprehensive guide to getting started with your new AI-powered blog system. Learn about the features, automation capabilities, and what to expect from daily AI-generated content.
 
 # Welcome to Your AI Blog! 🚀
 

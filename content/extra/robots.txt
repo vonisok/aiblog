@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: 🔸{SITEURL}/sitemap.xml
+
+# Allow crawling of all content
+Crawl-delay: 1
+
+# Disallow crawling of admin or private directories
+Disallow: /admin/
+Disallow: /private/
+
+# Allow crawling of feeds
+Allow: /feeds/ 

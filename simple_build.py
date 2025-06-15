@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*- #
 # Simple Build Configuration for Testing
 
+import re
+
 AUTHOR = 'AI Blog System'
 SITENAME = 'AI Generated Blog'
 SITEURL = 'https://vons.netlify.app'
@@ -10,6 +12,20 @@ SITE_DESCRIPTION = 'Fresh insights, generated daily through AI'
 PATH = 'content'
 TIMEZONE = 'UTC'
 DEFAULT_LANG = 'en'
+
+# Custom Jinja2 Functions
+def calculate_reading_time(content):
+    """Calculate reading time for content (fallback function)"""
+    if not content:
+        return 1
+    
+    # Remove HTML tags and get plain text
+    clean_text = re.sub(r'<[^>]+>', '', str(content))
+    word_count = len(clean_text.split())
+    
+    # Average reading speed is 200 words per minute
+    reading_time = max(1, round(word_count / 200))
+    return reading_time
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
@@ -70,6 +86,17 @@ CUSTOM_VARS = {
     'meta_keywords': 'AI, artificial intelligence, technology, productivity, automation, blog',
     'twitter_username': 'aiblog',
     'environment': 'test',
+}
+
+# Jinja2 Environment Settings
+JINJA_ENVIRONMENT = {
+    'trim_blocks': True,
+    'lstrip_blocks': True,
+}
+
+# Add custom filters
+JINJA_FILTERS = {
+    'calculate_reading_time': calculate_reading_time,
 }
 
 # AI Blog Configuration

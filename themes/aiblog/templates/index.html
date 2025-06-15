@@ -83,12 +83,12 @@
                             <time datetime="{{ article.date.isoformat() }}">
                                 {{ article.locale_date }}
                             </time>
-                            {% if AI_BLOG_CONFIG.show_reading_time and article.reading_time %}
+                            {% if AI_BLOG_CONFIG.show_reading_time %}
                             <span class="flex items-center">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
-                                {{ article.reading_time }} min read
+                                {{ article.reading_time|default(article.content|calculate_reading_time) }} min read
                             </span>
                             {% endif %}
                         </div>

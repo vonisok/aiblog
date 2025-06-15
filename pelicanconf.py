@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*- #
 
 import os
+import re
 from datetime import datetime
 
 # Basic Settings
 AUTHOR = '🔸{BlogName}'
 SITENAME = '🔸{BlogName}'
-SITEURL = ''  # For development
+SITEURL = 'http://localhost:8000'  # For development
 SITESUBTITLE = 'Fresh insights, generated daily.'
 
 PATH = 'content'
@@ -95,6 +96,20 @@ EXTRA_PATH_METADATA = {
     'extra/CNAME': {'path': 'CNAME'},
 }
 
+# Custom Jinja2 Functions
+def calculate_reading_time(content):
+    """Calculate reading time for content (fallback function)"""
+    if not content:
+        return 1
+    
+    # Remove HTML tags and get plain text
+    clean_text = re.sub(r'<[^>]+>', '', str(content))
+    word_count = len(clean_text.split())
+    
+    # Average reading speed is 200 words per minute
+    reading_time = max(1, round(word_count / 200))
+    return reading_time
+
 # Plugin Settings
 PLUGIN_PATHS = ['plugins']
 PLUGINS = [
@@ -178,6 +193,11 @@ JINJA_ENVIRONMENT = {
     'lstrip_blocks': True,
 }
 
+# Add custom filters
+JINJA_FILTERS = {
+    'calculate_reading_time': calculate_reading_time,
+}
+
 # Menu Settings
 MENUITEMS = (
     ('Home', '/'),
@@ -216,9 +236,9 @@ DEBUG = True
 LOG_FILTER = []
 
 # Template Pages
-TEMPLATE_PAGES = {
-    'extra/sitemap.xml': 'sitemap.xml',
-}
+# TEMPLATE_PAGES = {
+#     'extra/sitemap.xml': 'sitemap.xml',
+# }
 
 # Direct Templates
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives']

@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
+    <!-- Prevent theme flashing -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    
     <!-- Primary Meta Tags -->
     <title>{% block title %}{{ SITENAME }}{% if SITESUBTITLE %} - {{ SITESUBTITLE }}{% endif %}{% endblock %}</title>
     <meta name="title" content="{% block meta_title %}{{ SITENAME }}{% if SITESUBTITLE %} - {{ SITESUBTITLE }}{% endif %}{% endblock %}">
@@ -14,23 +25,27 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="{% block og_type %}website{% endblock %}">
-    <meta property="og:url" content="{% block og_url %}{{ SITEURL }}/{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}{{ SITEURL|default('') }}{% if SITEURL %}/{% endif %}{% endblock %}">
     <meta property="og:title" content="{% block og_title %}{{ SITENAME }}{% endblock %}">
     <meta property="og:description" content="{% block og_description %}{{ CUSTOM_VARS.site_description }}{% endblock %}">
-    <meta property="og:image" content="{% block og_image %}{{ SITEURL }}/theme/images/og-default.jpg{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ SITEURL|default('') }}{% if SITEURL %}/{% endif %}theme/images/og-default.jpg{% endblock %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="{{ SITENAME }}">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{% block twitter_url %}{{ SITEURL }}/{% endblock %}">
+    <meta property="twitter:url" content="{% block twitter_url %}{{ SITEURL|default('') }}{% if SITEURL %}/{% endif %}{% endblock %}">
     <meta property="twitter:title" content="{% block twitter_title %}{{ SITENAME }}{% endblock %}">
     <meta property="twitter:description" content="{% block twitter_description %}{{ CUSTOM_VARS.site_description }}{% endblock %}">
-    <meta property="twitter:image" content="{% block twitter_image %}{{ SITEURL }}/theme/images/og-default.jpg{% endblock %}">
+    <meta property="twitter:image" content="{% block twitter_image %}{{ SITEURL|default('') }}{% if SITEURL %}/{% endif %}theme/images/og-default.jpg{% endblock %}">
     {% if CUSTOM_VARS.twitter_username %}
     <meta name="twitter:creator" content="@{{ CUSTOM_VARS.twitter_username }}">
+    <meta name="twitter:site" content="@{{ CUSTOM_VARS.twitter_username }}">
     {% endif %}
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="{% block canonical %}{{ SITEURL }}/{% endblock %}">
+    <link rel="canonical" href="{% block canonical %}{{ SITEURL|default('') }}{% if SITEURL %}/{% endif %}{% endblock %}">
     
     <!-- Feeds -->
     {% if FEED_ALL_ATOM %}
