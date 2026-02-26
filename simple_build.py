@@ -114,7 +114,7 @@ MENUITEMS = (
     ('Home', '/'),
     ('Archives', '/archives/index.html'),
     ('Categories', '/categories.html'),
-    ('Tags', '/tags.html'),
+    ('About', '/about/'),
 )
 
 # Footer links

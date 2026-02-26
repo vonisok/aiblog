@@ -128,6 +128,22 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/main.css">
 
+    <!-- Site-level structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "{{ SITENAME }}",
+        "description": "{{ CUSTOM_VARS.site_description }}",
+        "url": "{{ SITEURL|default('') }}/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "{{ SITENAME }}",
+            "logo": { "@type": "ImageObject", "url": "{{ SITEURL|default('') }}/theme/images/og-default.jpg" }
+        }
+    }
+    </script>
+
     {% block extra_head %}{% endblock %}
 
     <!-- Analytics -->
