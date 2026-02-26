@@ -1,234 +1,205 @@
 {% extends "base.html" %}
 
-{% block title %}{{ SITENAME }}{% if SITESUBTITLE %} - {{ SITESUBTITLE }}{% endif %}{% endblock %}
+{% block title %}{{ SITENAME }}{% if SITESUBTITLE %} &mdash; {{ SITESUBTITLE }}{% endif %}{% endblock %}
 {% block meta_description %}{{ CUSTOM_VARS.site_description }}{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="bg-gradient-to-br from-primary-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 py-12 lg:py-20">
-    <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-                {{ SITENAME }}
+<section class="relative overflow-hidden bg-white dark:bg-surface-950">
+    <div class="gradient-mesh absolute inset-0"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-100 dark:bg-brand-950 text-brand-700 dark:text-brand-300 text-xs font-medium mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-500 animate-pulse"></span>
+                AI-Powered Insights
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-surface-900 dark:text-white leading-[1.1] mb-5">
+                Fresh ideas,<br>
+                <span class="bg-gradient-to-r from-brand-600 via-brand-500 to-accent-500 bg-clip-text text-transparent">generated daily.</span>
             </h1>
-            {% if SITESUBTITLE %}
-            <p class="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 font-light">
-                {{ SITESUBTITLE }}
-            </p>
-            {% endif %}
-            <p class="text-lg text-gray-700 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto">
+            <p class="text-lg text-surface-500 dark:text-surface-400 leading-relaxed max-w-xl mb-8">
                 {{ CUSTOM_VARS.site_description }}
             </p>
-            
-            <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#latest-posts" class="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-5-5-5 5"></path>
-                    </svg>
-                    Latest Posts
+            <div class="flex flex-wrap gap-3">
+                <a href="#latest" class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"/></svg>
+                    Read Latest
                 </a>
-                <a href="{{ SITEURL }}/feeds/all.atom.xml" class="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-medium rounded-lg border border-gray-300 dark:border-gray-600 transition-colors">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/>
-                    </svg>
+                {% if FEED_ALL_ATOM %}
+                <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white dark:bg-surface-800 text-surface-700 dark:text-surface-300 text-sm font-medium rounded-lg border border-surface-200 dark:border-surface-700 hover:border-surface-300 dark:hover:border-surface-600 shadow-sm hover:shadow-md transition-all">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a1 1 0 000 2c5.523 0 10 4.477 10 10a1 1 0 102 0C17 8.373 11.627 3 5 3zm0 4a1 1 0 000 2 6 6 0 016 6 1 1 0 102 0 8 8 0 00-8-8zm0 4a1 1 0 000 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z"/></svg>
                     Subscribe
                 </a>
+                {% endif %}
             </div>
         </div>
     </div>
 </section>
 
 <!-- Latest Posts Section -->
-<section id="latest-posts" class="py-12 lg:py-20 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
-            <!-- Section Header -->
-            <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                    Latest Insights
-                </h2>
-                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    Fresh perspectives on technology, productivity, and the future of AI.
-                </p>
+<section id="latest" class="py-14 lg:py-20 bg-surface-50 dark:bg-surface-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <h2 class="text-2xl lg:text-3xl font-bold tracking-tight text-surface-900 dark:text-white">Latest Posts</h2>
+                <p class="mt-1.5 text-sm text-surface-500 dark:text-surface-400">Fresh perspectives on technology, productivity, and AI.</p>
             </div>
+            {% if articles|length > 6 %}
+            <a href="/archives.html" class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors">
+                View all
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </a>
+            {% endif %}
+        </div>
 
-            <!-- Posts Grid -->
-            {% if articles %}
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {% for article in articles[:9] %}
-                <article class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                    <!-- Article Image -->
-                    {% if article.cover_image %}
-                    <div class="aspect-video overflow-hidden">
-                        <img 
-                            src="{{ SITEURL }}/{{ article.cover_image }}" 
-                            alt="{{ article.title }}"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            loading="lazy"
-                        >
-                    </div>
+        {% if articles %}
+        <!-- Featured Post (first article) -->
+        {% set featured = articles[0] %}
+        <article class="mb-10 bg-white dark:bg-surface-850 rounded-2xl shadow-sm hover:shadow-lg border border-surface-200/60 dark:border-surface-800 overflow-hidden transition-all duration-300 group">
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                <div class="aspect-[16/10] lg:aspect-auto overflow-hidden">
+                    {% if featured.cover_image %}
+                    <img src="{{ SITEURL }}/{{ featured.cover_image }}" alt="{{ featured.title }}" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy">
                     {% else %}
-                    <div class="aspect-video bg-gradient-to-br from-primary-500 to-blue-600 flex items-center justify-center">
-                        <svg class="w-12 h-12 text-white opacity-50" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    <div class="w-full h-full min-h-[240px] card-gradient-1 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                            <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     {% endif %}
-                    
-                    <!-- Article Content -->
-                    <div class="p-6">
-                        <!-- Meta Info -->
-                        <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-3">
-                            <time datetime="{{ article.date.isoformat() }}">
-                                {{ article.locale_date }}
-                            </time>
-                            {% if AI_BLOG_CONFIG.show_reading_time %}
-                            <span class="flex items-center">
-                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                {{ article.reading_time|default(article.content|calculate_reading_time) }} min read
-                            </span>
-                            {% endif %}
-                        </div>
-                        
-                        <!-- Title -->
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                            <a href="{{ SITEURL }}/{{ article.url }}" class="stretched-link">
-                                {{ article.title }}
-                            </a>
-                        </h3>
-                        
-                        <!-- Summary -->
-                        <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
-                            {{ article.summary|default(article.content[:150] + "...")|striptags }}
-                        </p>
-                        
-                        <!-- Tags & Category -->
-                        <div class="flex items-center justify-between">
-                            {% if AI_BLOG_CONFIG.show_categories and article.category %}
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
-                                {{ article.category }}
-                            </span>
-                            {% endif %}
-                            
-                            {% if AI_BLOG_CONFIG.show_tags and article.tags %}
-                            <div class="flex gap-1">
-                                {% for tag in article.tags[:2] %}
-                                <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
-                                    #{{ tag }}
-                                </span>
-                                {% endfor %}
-                                {% if article.tags|length > 2 %}
-                                <span class="text-xs text-gray-500 dark:text-gray-400">
-                                    +{{ article.tags|length - 2 }}
-                                </span>
-                                {% endif %}
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </article>
-                {% endfor %}
-            </div>
-            
-            <!-- Load More Button -->
-            {% if articles|length > 9 %}
-            <div class="text-center mt-12">
-                <a href="{{ SITEURL }}/archives.html" class="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl">
-                    View All Posts
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                </a>
-            </div>
-            {% endif %}
-            
-            {% else %}
-            <!-- No Posts State -->
-            <div class="text-center py-12">
-                <svg class="w-16 h-16 text-gray-400 dark:text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No Posts Yet</h3>
-                <p class="text-gray-600 dark:text-gray-400">
-                    The AI content generator is preparing amazing insights for you. Check back soon!
-                </p>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-</section>
-
-<!-- Newsletter/Features Section -->
-<section class="py-12 lg:py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <!-- Features -->
-                <div>
-                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-                        Why Follow {{ SITENAME }}?
-                    </h2>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-primary-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <div>
-                                <h3 class="font-semibold text-gray-900 dark:text-white">Daily AI-Generated Insights</h3>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">Fresh perspectives on tech trends, powered by cutting-edge AI.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-primary-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <div>
-                                <h3 class="font-semibold text-gray-900 dark:text-white">Actionable Content</h3>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">Practical tips and strategies you can implement immediately.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-primary-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <div>
-                                <h3 class="font-semibold text-gray-900 dark:text-white">Always Up-to-Date</h3>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">Content that adapts to the latest industry developments.</p>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
-                
-                <!-- RSS/Subscribe -->
-                <div class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-xl">
-                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                        Stay Updated
+                <div class="p-6 lg:p-8 flex flex-col justify-center">
+                    <div class="flex items-center gap-3 mb-3">
+                        {% if AI_BLOG_CONFIG.show_categories and featured.category %}
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-300">{{ featured.category }}</span>
+                        {% endif %}
+                        <time datetime="{{ featured.date.isoformat() }}" class="text-xs text-surface-400 dark:text-surface-500">{{ featured.locale_date }}</time>
+                    </div>
+                    <h3 class="text-xl lg:text-2xl font-bold text-surface-900 dark:text-white mb-3 leading-snug group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                        <a href="{{ SITEURL }}/{{ featured.url }}">{{ featured.title }}</a>
                     </h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-6">
-                        Get the latest AI-generated insights delivered directly to your feed reader.
+                    <p class="text-surface-500 dark:text-surface-400 line-clamp-3 mb-5 text-sm leading-relaxed">
+                        {{ featured.summary|default(featured.content[:200] + "...")|striptags }}
                     </p>
-                    <div class="space-y-3">
-                        <a href="{{ SITEURL }}/feeds/all.atom.xml" class="w-full inline-flex items-center justify-center px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/>
-                            </svg>
-                            Subscribe via RSS
+                    <div class="flex items-center gap-2">
+                        <a href="{{ SITEURL }}/{{ featured.url }}" class="inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors">
+                            Read article
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
                         </a>
-                        {% if FEED_ALL_JSON %}
-                        <a href="{{ SITEURL }}/feeds/all.json" class="w-full inline-flex items-center justify-center px-4 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-medium rounded-lg transition-colors border border-gray-300 dark:border-gray-600">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                            JSON Feed
-                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Remaining Posts Grid -->
+        {% if articles|length > 1 %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for article in articles[1:7] %}
+            <article class="bg-white dark:bg-surface-850 rounded-xl shadow-sm hover:shadow-lg border border-surface-200/60 dark:border-surface-800 overflow-hidden transition-all duration-300 group">
+                <div class="aspect-[16/9] overflow-hidden">
+                    {% if article.cover_image %}
+                    <img src="{{ SITEURL }}/{{ article.cover_image }}" alt="{{ article.title }}" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy">
+                    {% else %}
+                    <div class="w-full h-full card-gradient-{{ loop.index % 3 + 1 }} flex items-center justify-center">
+                        <svg class="w-10 h-10 text-white/25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-3 text-xs text-surface-400 dark:text-surface-500 mb-2.5">
+                        <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+                        {% if AI_BLOG_CONFIG.show_reading_time %}
+                        <span class="flex items-center gap-1">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            {{ article.reading_time|default(article.content|calculate_reading_time) }} min
+                        </span>
+                        {% endif %}
+                    </div>
+                    <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2 leading-snug group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2">
+                        <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+                    </h3>
+                    <p class="text-sm text-surface-500 dark:text-surface-400 line-clamp-2 mb-3">
+                        {{ article.summary|default(article.content[:120] + "...")|striptags }}
+                    </p>
+                    <div class="flex items-center justify-between">
+                        {% if AI_BLOG_CONFIG.show_categories and article.category %}
+                        <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-surface-100 text-surface-600 dark:bg-surface-800 dark:text-surface-400">{{ article.category }}</span>
+                        {% endif %}
+                        {% if AI_BLOG_CONFIG.show_tags and article.tags %}
+                        <div class="flex gap-1">
+                            {% for tag in article.tags[:2] %}
+                            <span class="text-[11px] text-surface-400 dark:text-surface-500">#{{ tag }}</span>
+                            {% endfor %}
+                        </div>
                         {% endif %}
                     </div>
                 </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- View All link (mobile) -->
+        {% if articles|length > 6 %}
+        <div class="text-center mt-10 sm:hidden">
+            <a href="/archives.html" class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-950 transition-colors">
+                View all posts
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </a>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <!-- Empty State -->
+        <div class="text-center py-16 px-4">
+            <div class="w-16 h-16 rounded-2xl bg-brand-100 dark:bg-brand-950 flex items-center justify-center mx-auto mb-5">
+                <svg class="w-8 h-8 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/>
+                </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-surface-900 dark:text-white mb-2">No posts yet</h3>
+            <p class="text-sm text-surface-500 dark:text-surface-400 max-w-sm mx-auto">
+                The AI content generator is preparing insights for you. Check back soon!
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-14 lg:py-20 bg-white dark:bg-surface-950">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center md:text-left">
+                <div class="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-950 flex items-center justify-center mb-4 mx-auto md:mx-0">
+                    <svg class="w-5 h-5 text-brand-600 dark:text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/>
+                    </svg>
+                </div>
+                <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2">AI-Generated Daily</h3>
+                <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">Fresh perspectives on tech trends, written by cutting-edge AI models.</p>
+            </div>
+            <div class="text-center md:text-left">
+                <div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-950 flex items-center justify-center mb-4 mx-auto md:mx-0">
+                    <svg class="w-5 h-5 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+                    </svg>
+                </div>
+                <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2">Actionable Content</h3>
+                <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">Practical tips and strategies you can implement immediately.</p>
+            </div>
+            <div class="text-center md:text-left">
+                <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950 flex items-center justify-center mb-4 mx-auto md:mx-0">
+                    <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2">Always Current</h3>
+                <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">Content that adapts to the latest industry developments and trends.</p>
             </div>
         </div>
     </div>
 </section>
-{% endblock %} 
+{% endblock %}

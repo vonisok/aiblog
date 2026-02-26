@@ -74,11 +74,16 @@ PAGE_SAVE_AS = '{slug}/index.html'
 YEAR_ARCHIVE_SAVE_AS = '{date:%Y}/index.html'
 MONTH_ARCHIVE_SAVE_AS = '{date:%Y}/{date:%m}/index.html'
 
-# Disable unnecessary features for testing
-CATEGORY_SAVE_AS = ''
-TAG_SAVE_AS = ''
+# Page generation
+CATEGORY_URL = 'category/{slug}/'
+CATEGORY_SAVE_AS = 'category/{slug}/index.html'
+TAG_URL = 'tag/{slug}/'
+TAG_SAVE_AS = 'tag/{slug}/index.html'
 AUTHOR_SAVE_AS = ''
 ARCHIVES_SAVE_AS = 'archives/index.html'
+
+# Direct templates
+DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives']
 
 # Custom variables for the theme
 CUSTOM_VARS = {
@@ -98,6 +103,23 @@ JINJA_ENVIRONMENT = {
 JINJA_FILTERS = {
     'calculate_reading_time': calculate_reading_time,
 }
+
+# Navigation
+MENUITEMS = (
+    ('Home', '/'),
+    ('Archives', '/archives/index.html'),
+    ('Categories', '/categories.html'),
+    ('Tags', '/tags.html'),
+)
+
+# Footer links
+LINKS = (
+    ('Pelican', 'https://getpelican.com/'),
+    ('Python.org', 'https://www.python.org/'),
+    ('OpenAI', 'https://openai.com/'),
+)
+
+FOOTER_TEXT = 'Powered by AI and Pelican.'
 
 # AI Blog Configuration
 AI_BLOG_CONFIG = {

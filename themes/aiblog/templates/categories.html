@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Categories &mdash; {{ SITENAME }}{% endblock %}
+{% block meta_description %}Browse articles by category on {{ SITENAME }}.{% endblock %}
+
+{% block content %}
+<section class="py-10 lg:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="mb-10">
+            <h1 class="text-3xl font-bold tracking-tight text-surface-900 dark:text-white mb-2">Categories</h1>
+            <p class="text-surface-500 dark:text-surface-400 text-sm">Browse articles by topic.</p>
+        </header>
+
+        {% if categories %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {% for category, articles in categories %}
+            <a href="{{ SITEURL }}/category/{{ category.slug }}.html" class="flex items-center justify-between p-5 rounded-xl bg-white dark:bg-surface-850 border border-surface-200 dark:border-surface-800 hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-md transition-all group">
+                <div>
+                    <h2 class="text-base font-semibold text-surface-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">{{ category }}</h2>
+                    <span class="text-xs text-surface-400 dark:text-surface-500 mt-0.5 block">{{ articles|length }} article{{ 's' if articles|length != 1 }}</span>
+                </div>
+                <svg class="w-5 h-5 text-surface-300 dark:text-surface-600 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-surface-500 dark:text-surface-400 text-sm py-10 text-center">No categories yet.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

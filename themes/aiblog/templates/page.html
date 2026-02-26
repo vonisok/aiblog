@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} &mdash; {{ SITENAME }}{% endblock %}
+{% block meta_description %}{{ page.summary|default(page.content[:160] + "...")|striptags }}{% endblock %}
+
+{% block content %}
+<article class="py-10 lg:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <header class="mb-10">
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-surface-900 dark:text-white leading-tight">
+                {{ page.title }}
+            </h1>
+        </header>
+        <div class="prose-custom text-surface-700 dark:text-surface-300 text-[16px] leading-relaxed">
+            {{ page.content }}
+        </div>
+    </div>
+</article>
+{% endblock %}
