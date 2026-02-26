@@ -168,36 +168,54 @@
     </div>
 </section>
 
-<!-- Features Section -->
+<!-- Newsletter CTA -->
 <section class="py-14 lg:py-20 bg-white dark:bg-surface-950">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="text-center md:text-left">
-                <div class="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-950 flex items-center justify-center mb-4 mx-auto md:mx-0">
-                    <svg class="w-5 h-5 text-brand-600 dark:text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/>
-                    </svg>
-                </div>
-                <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2">AI-Generated Daily</h3>
-                <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">Fresh perspectives on tech trends, written by cutting-edge AI models.</p>
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 p-8 lg:p-12">
+            <div class="gradient-mesh absolute inset-0 opacity-30"></div>
+            <div class="relative max-w-2xl">
+                <h2 class="text-2xl lg:text-3xl font-bold text-white mb-3">Stay ahead of the curve</h2>
+                <p class="text-brand-200 mb-6 text-sm lg:text-base leading-relaxed">Get AI-curated insights on technology, productivity, and engineering delivered to your inbox. No spam, unsubscribe anytime.</p>
+                <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed!'; this.querySelector('input').disabled=true;">
+                    <input type="email" placeholder="you@example.com" required class="newsletter-input flex-1 px-4 py-2.5 rounded-lg bg-white/10 border border-white/20 text-white placeholder-brand-300 text-sm focus:bg-white/15">
+                    <button type="submit" class="px-6 py-2.5 bg-white text-brand-700 text-sm font-semibold rounded-lg hover:bg-brand-50 transition-colors shadow-sm whitespace-nowrap">Subscribe Free</button>
+                </form>
+                <p class="text-brand-300 text-xs mt-3">Join 1,000+ developers and tech leaders.</p>
             </div>
-            <div class="text-center md:text-left">
-                <div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-950 flex items-center justify-center mb-4 mx-auto md:mx-0">
-                    <svg class="w-5 h-5 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
-                    </svg>
+        </div>
+    </div>
+</section>
+
+<!-- Value Props -->
+<section class="py-12 lg:py-16 bg-surface-50 dark:bg-surface-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-brand-100 dark:bg-brand-950 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4.5 h-4.5 text-brand-600 dark:text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
                 </div>
-                <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2">Actionable Content</h3>
-                <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">Practical tips and strategies you can implement immediately.</p>
+                <div>
+                    <h3 class="text-sm font-semibold text-surface-900 dark:text-white">AI-Generated Daily</h3>
+                    <p class="text-xs text-surface-500 dark:text-surface-400 mt-0.5">Fresh perspectives powered by cutting-edge AI models.</p>
+                </div>
             </div>
-            <div class="text-center md:text-left">
-                <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950 flex items-center justify-center mb-4 mx-auto md:mx-0">
-                    <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
+            <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-accent-100 dark:bg-accent-950 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4.5 h-4.5 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
                 </div>
-                <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2">Always Current</h3>
-                <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">Content that adapts to the latest industry developments and trends.</p>
+                <div>
+                    <h3 class="text-sm font-semibold text-surface-900 dark:text-white">Actionable Content</h3>
+                    <p class="text-xs text-surface-500 dark:text-surface-400 mt-0.5">Practical tips you can implement immediately.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-blue-100 dark:bg-blue-950 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4.5 h-4.5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-surface-900 dark:text-white">Always Current</h3>
+                    <p class="text-xs text-surface-500 dark:text-surface-400 mt-0.5">Adapts to the latest industry developments.</p>
+                </div>
             </div>
         </div>
     </div>
