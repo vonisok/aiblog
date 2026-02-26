@@ -1,0 +1,126 @@
+/* AI Blog — Design System Tokens & Utilities
+   Custom styles that complement the Tailwind utility layer.
+   Keep this file lean; prefer Tailwind classes in templates. */
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f4f4f5; }
+::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
+.dark ::-webkit-scrollbar-track { background: #18181b; }
+.dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+
+/* ─── Reading Progress ─── */
+.reading-progress {
+    position: fixed; top: 0; left: 0; width: 0%; height: 3px;
+    background: linear-gradient(90deg, #7c3aed, #a78bfa, #7c3aed);
+    background-size: 200% 100%;
+    animation: shimmer 2s ease infinite;
+    z-index: 9999;
+}
+@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+/* ─── Hero Gradient Mesh ─── */
+.gradient-mesh {
+    background:
+        radial-gradient(at 20% 30%, rgba(124,58,237,.15) 0, transparent 50%),
+        radial-gradient(at 80% 20%, rgba(59,130,246,.12) 0, transparent 50%),
+        radial-gradient(at 50% 80%, rgba(16,185,129,.08) 0, transparent 50%);
+}
+.dark .gradient-mesh {
+    background:
+        radial-gradient(at 20% 30%, rgba(124,58,237,.2) 0, transparent 50%),
+        radial-gradient(at 80% 20%, rgba(59,130,246,.15) 0, transparent 50%),
+        radial-gradient(at 50% 80%, rgba(16,185,129,.1) 0, transparent 50%);
+}
+
+/* ─── Card Placeholder Gradients ─── */
+.card-gradient-1 { background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%); }
+.card-gradient-2 { background: linear-gradient(135deg, #6d28d9 0%, #10b981 100%); }
+.card-gradient-3 { background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #3b82f6 100%); }
+
+/* ─── Prose — Article Content Typography ─── */
+.prose-custom h1, .prose-custom h2, .prose-custom h3, .prose-custom h4 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #18181b;
+}
+.dark .prose-custom h1, .dark .prose-custom h2,
+.dark .prose-custom h3, .dark .prose-custom h4 { color: #fafafa; }
+.prose-custom h2 { font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+.prose-custom h3 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+.prose-custom p  { line-height: 1.8; margin-bottom: 1.25rem; }
+.prose-custom ul, .prose-custom ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+.prose-custom li { margin-bottom: 0.5rem; line-height: 1.7; }
+.prose-custom ul { list-style-type: disc; }
+.prose-custom ol { list-style-type: decimal; }
+.prose-custom blockquote {
+    border-left: 3px solid #7c3aed;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 0.5rem 0.5rem 0;
+    background: #f5f3ff;
+    color: #4c1d95;
+}
+.dark .prose-custom blockquote {
+    background: rgba(124,58,237,.1);
+    color: #c4b5fd;
+    border-left-color: #a78bfa;
+}
+.prose-custom code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875em;
+    padding: 0.15em 0.4em;
+    border-radius: 0.25rem;
+    background: #f4f4f5;
+    color: #7c3aed;
+}
+.dark .prose-custom code {
+    background: #27272a;
+    color: #a78bfa;
+}
+.prose-custom pre {
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    overflow-x: auto;
+    background: #1e1e21;
+    color: #d4d4d8;
+}
+.prose-custom pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+}
+.prose-custom a { color: #7c3aed; text-decoration: underline; text-underline-offset: 2px; }
+.prose-custom a:hover { color: #6d28d9; }
+.dark .prose-custom a { color: #a78bfa; }
+.dark .prose-custom a:hover { color: #c4b5fd; }
+.prose-custom img { border-radius: 0.75rem; }
+.prose-custom hr { border-color: #e4e4e7; margin: 2rem 0; }
+.dark .prose-custom hr { border-color: #3f3f46; }
+.prose-custom strong { font-weight: 600; color: #18181b; }
+.dark .prose-custom strong { color: #fafafa; }
+
+/* ─── Clamp Utilities ─── */
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ─── Smooth Transitions ─── */
+*, *::before, *::after {
+    transition-property: background-color, color, border-color, box-shadow;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+}
+
+/* ─── Newsletter CTA ─── */
+.newsletter-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, .15);
+    border-color: #7c3aed;
+}
+.dark .newsletter-input:focus {
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, .2);
+    border-color: #a78bfa;
+}

@@ -6,7 +6,7 @@ import re
 
 AUTHOR = 'AI Blog System'
 SITENAME = 'AI Generated Blog'
-SITEURL = 'https://vons.netlify.app'
+SITEURL = ''
 SITE_DESCRIPTION = 'Fresh insights, generated daily through AI'
 
 PATH = 'content'
@@ -48,6 +48,11 @@ THEME = 'themes/aiblog'
 # Static paths
 STATIC_PATHS = ['images', 'extra']
 
+EXTRA_PATH_METADATA = {
+    'extra/robots.txt': {'path': 'robots.txt'},
+    'extra/favicon.ico': {'path': 'favicon.ico'},
+}
+
 # Output path
 OUTPUT_PATH = 'output/'
 
@@ -58,7 +63,7 @@ DELETE_OUTPUT_DIRECTORY = True
 PLUGINS = []
 
 # Basic settings
-RELATIVE_URLS = False
+RELATIVE_URLS = True
 CACHE_CONTENT = False
 LOAD_CONTENT_CACHE = False
 
