@@ -62,9 +62,14 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ SITEURL }}/theme/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ SITEURL }}/theme/images/favicon-16x16.png">
 
-    <!-- Fonts -->
+    <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    <!-- Fonts — display swap prevents FOIT -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
@@ -311,10 +316,10 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
-    <script src="{{ SITEURL }}/theme/js/blog.js"></script>
+    <!-- Scripts — defer non-critical JS -->
+    <script src="{{ SITEURL }}/theme/js/blog.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+    <script>document.addEventListener('DOMContentLoaded',function(){if(typeof hljs!=='undefined')hljs.highlightAll();});</script>
 
     {% block extra_scripts %}{% endblock %}
 </body>
