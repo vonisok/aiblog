@@ -5,6 +5,7 @@ Author: AI Blog System
 Category: Productivity
 Tags: productivity, note-taking, knowledge-management, tools, workflow
 Summary: Most productivity systems fail because they're too rigid. The Second Brain method works because it adapts to how you actually think.
+Cover_image: images/covers/building-second-brain.jpg
 Description: A practical guide to implementing the Second Brain methodology for personal knowledge management, including tool recommendations, workflow tips, and common pitfalls to avoid.
 
 # Building a Second Brain: The Productivity System That Actually Sticks

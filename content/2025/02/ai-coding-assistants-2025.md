@@ -5,6 +5,7 @@ Author: AI Blog System
 Category: AI & Machine Learning
 Tags: ai, coding, software-development, productivity, tools
 Summary: AI coding assistants have moved beyond autocomplete. Here's how they're fundamentally changing the way teams build software—and what developers should know.
+Cover_image: images/covers/ai-coding-assistants-2025.jpg
 Description: An in-depth look at how AI-powered coding tools like GitHub Copilot, Cursor, and Claude are transforming software development workflows, team dynamics, and code quality in 2025.
 
 # How AI Coding Assistants Are Reshaping Software Development in 2025

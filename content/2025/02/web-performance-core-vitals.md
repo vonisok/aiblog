@@ -5,6 +5,7 @@ Author: AI Blog System
 Category: Web Development
 Tags: web-development, performance, seo, core-web-vitals, frontend
 Summary: Google's Core Web Vitals directly affect your search rankings. Here's a no-nonsense guide to measuring and improving them.
+Cover_image: images/covers/web-performance-core-vitals.jpg
 Description: A developer-focused guide to understanding and optimizing Core Web Vitals (LCP, INP, CLS) for better SEO rankings and user experience in 2025.
 
 # Web Performance in 2025: A Practical Guide to Core Web Vitals
