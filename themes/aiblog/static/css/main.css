@@ -58,14 +58,18 @@
 .prose-custom ol { list-style-type: decimal; }
 .prose-custom blockquote {
     border-left: 3px solid #7c3aed;
-    padding: 1rem 1.5rem;
-    margin: 1.5rem 0;
-    border-radius: 0 0.5rem 0.5rem 0;
-    background: #f5f3ff;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 0.75rem 0.75rem 0;
+    background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
     color: #4c1d95;
+    font-style: italic;
+    position: relative;
 }
+.prose-custom blockquote p { margin-bottom: 0; }
+.prose-custom blockquote p:last-child { margin-bottom: 0; }
 .dark .prose-custom blockquote {
-    background: rgba(124,58,237,.1);
+    background: linear-gradient(135deg, rgba(124,58,237,.08) 0%, rgba(124,58,237,.15) 100%);
     color: #c4b5fd;
     border-left-color: #a78bfa;
 }
@@ -85,23 +89,87 @@
     border-radius: 0.75rem;
     padding: 1.25rem;
     overflow-x: auto;
-    background: #1e1e21;
+    background: #1a1a2e;
     color: #d4d4d8;
+    border: 1px solid #2d2d44;
+    font-size: 0.85em;
+    line-height: 1.7;
+    position: relative;
+}
+.dark .prose-custom pre {
+    background: #0f0f1a;
+    border-color: #1e1e30;
 }
 .prose-custom pre code {
     background: none;
     padding: 0;
     color: inherit;
+    font-size: inherit;
+}
+
+/* ─── Inline Code vs Block Code ─── */
+.prose-custom :not(pre) > code {
+    font-size: 0.85em;
+    padding: 0.2em 0.45em;
+    border-radius: 0.3rem;
+    background: #f4f4f5;
+    color: #7c3aed;
+    border: 1px solid #e4e4e7;
+    font-weight: 500;
+}
+.dark .prose-custom :not(pre) > code {
+    background: #1e1e24;
+    color: #a78bfa;
+    border-color: #2d2d3a;
 }
 .prose-custom a { color: #7c3aed; text-decoration: underline; text-underline-offset: 2px; }
 .prose-custom a:hover { color: #6d28d9; }
 .dark .prose-custom a { color: #a78bfa; }
 .dark .prose-custom a:hover { color: #c4b5fd; }
 .prose-custom img { border-radius: 0.75rem; }
-.prose-custom hr { border-color: #e4e4e7; margin: 2rem 0; }
-.dark .prose-custom hr { border-color: #3f3f46; }
+.prose-custom hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4d4d8, transparent);
+    margin: 2.5rem 0;
+}
+.dark .prose-custom hr {
+    background: linear-gradient(90deg, transparent, #3f3f46, transparent);
+}
 .prose-custom strong { font-weight: 600; color: #18181b; }
 .dark .prose-custom strong { color: #fafafa; }
+
+/* ─── Tables ─── */
+.prose-custom table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.875rem;
+}
+.prose-custom th {
+    text-align: left;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid #e4e4e7;
+    color: #18181b;
+}
+.dark .prose-custom th {
+    border-bottom-color: #3f3f46;
+    color: #fafafa;
+}
+.prose-custom td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f4f4f5;
+}
+.dark .prose-custom td {
+    border-bottom-color: #27272a;
+}
+.prose-custom tr:hover td {
+    background: #fafafa;
+}
+.dark .prose-custom tr:hover td {
+    background: #18181b;
+}
 
 /* ─── Clamp Utilities ─── */
 .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }

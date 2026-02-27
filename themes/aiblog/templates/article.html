@@ -109,8 +109,14 @@
         </div>
         {% endif %}
 
+        <!-- Table of Contents (auto-generated for long articles) -->
+        <nav id="toc" class="hidden mb-10 p-5 rounded-xl bg-surface-50 dark:bg-surface-900 border border-surface-200 dark:border-surface-800">
+            <h2 class="text-xs font-semibold uppercase tracking-wider text-surface-500 dark:text-surface-400 mb-3">In this article</h2>
+            <ol id="toc-list" class="space-y-1.5 text-sm"></ol>
+        </nav>
+
         <!-- Article Content -->
-        <div class="prose-custom text-surface-700 dark:text-surface-300 text-[16px] leading-relaxed mb-12">
+        <div id="article-body" class="prose-custom text-surface-700 dark:text-surface-300 text-[16px] leading-relaxed mb-12">
             {{ article.content }}
         </div>
 
@@ -177,11 +183,34 @@ function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(function() {
         const button = event.target.closest('button');
         if (button) {
-            const originalHTML = button.innerHTML;
-            button.innerHTML = '<svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>';
-            setTimeout(() => { button.innerHTML = originalHTML; }, 2000);
+            const orig = button.innerHTML;
+            button.innerHTML = '<svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>';
+            setTimeout(() => { button.innerHTML = orig; }, 2000);
         }
     });
 }
+
+(function() {
+    const body = document.getElementById('article-body');
+    const toc = document.getElementById('toc');
+    const list = document.getElementById('toc-list');
+    if (!body || !toc || !list) return;
+
+    const headings = body.querySelectorAll('h2');
+    if (headings.length < 3) return;
+
+    toc.classList.remove('hidden');
+    headings.forEach(function(h, i) {
+        const id = 'section-' + i;
+        h.id = id;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.textContent = h.textContent;
+        a.className = 'text-surface-600 dark:text-surface-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors';
+        li.appendChild(a);
+        list.appendChild(li);
+    });
+})();
 </script>
 {% endblock %}
