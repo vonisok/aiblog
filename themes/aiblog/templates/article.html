@@ -129,7 +129,7 @@
         <div class="mb-10">
             <div class="flex flex-wrap gap-2">
                 {% for tag in article.tags %}
-                <a href="{{ SITEURL }}/tag/{{ tag.slug }}.html" class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-surface-100 text-surface-600 dark:bg-surface-800 dark:text-surface-400 hover:bg-brand-50 hover:text-brand-700 dark:hover:bg-brand-950 dark:hover:text-brand-300 transition-colors">
+                <a href="{{ SITEURL }}/tag/{{ tag.slug }}.html" class="tag-pill inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-surface-100 text-surface-600 dark:bg-surface-800 dark:text-surface-400 hover:bg-brand-50 hover:text-brand-700 dark:hover:bg-brand-950 dark:hover:text-brand-300">
                     #{{ tag }}
                 </a>
                 {% endfor %}
