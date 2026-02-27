@@ -36,20 +36,43 @@
     </div>
 </section>
 
+<!-- Stats Bar -->
+<section class="border-y border-surface-200 dark:border-surface-800 bg-white dark:bg-surface-950">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+                <div class="text-2xl font-bold text-surface-900 dark:text-white">{{ articles|length }}</div>
+                <div class="text-xs text-surface-500 dark:text-surface-400 mt-0.5">Articles Published</div>
+            </div>
+            <div>
+                <div class="text-2xl font-bold text-surface-900 dark:text-white">{{ categories|length if categories is defined else '5' }}</div>
+                <div class="text-xs text-surface-500 dark:text-surface-400 mt-0.5">Topics Covered</div>
+            </div>
+            <div>
+                <div class="text-2xl font-bold text-surface-900 dark:text-white">Daily</div>
+                <div class="text-xs text-surface-500 dark:text-surface-400 mt-0.5">Fresh Content</div>
+            </div>
+            <div>
+                <div class="text-2xl font-bold text-brand-600 dark:text-brand-400">Free</div>
+                <div class="text-xs text-surface-500 dark:text-surface-400 mt-0.5">Always & Forever</div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Latest Posts Section -->
 <section id="latest" class="py-14 lg:py-20 bg-surface-50 dark:bg-surface-900">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-end justify-between mb-10">
+        <!-- Section header with category pills -->
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div>
                 <h2 class="text-2xl lg:text-3xl font-bold tracking-tight text-surface-900 dark:text-white">Latest Posts</h2>
                 <p class="mt-1.5 text-sm text-surface-500 dark:text-surface-400">Fresh perspectives on technology, productivity, and AI.</p>
             </div>
-            {% if articles|length > 6 %}
-            <a href="/archives.html" class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors">
+            <a href="/archives/index.html" class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors">
                 View all
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
             </a>
-            {% endif %}
         </div>
 
         {% if articles %}
